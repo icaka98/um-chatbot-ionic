@@ -1,0 +1,23 @@
+<ion-slides [pager]="true" class="swipe-intro">
+
+  <ion-slide>
+    <img src="../../assets/imgs/um_logo.png">
+    <h1>Welcome to UM ChatBOT!</h1>
+    <button ion-button (click)="nextSlide()">Next</button>
+  </ion-slide>
+
+  <ion-slide>
+    <img src="../../assets/imgs/um_logo.png">
+    <h1>Do you have a question for us? Please, contact our ChatBOT!</h1>
+    <button ion-button (click)="prevSlide()">Back</button>
+    <button ion-button (click)="nextSlide()">Next</button>
+  </ion-slide>
+
+  <ion-slide>
+    <img src="../../assets/imgs/um_logo.png">
+    <h1>Instructions are: First have a look at the news and then contact the ChatBOT!</h1>
+    <button ion-button (click)="prevSlide()">Back</button>
+    <button ion-button (click)="complete()">Next</button>
+  </ion-slide>
+
+</ion-slides>

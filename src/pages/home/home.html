@@ -1,17 +1,60 @@
+<ion-menu [content]="chat">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list *ngFor="let page of pages">
+
+      <button ion-item (click)="openPage(page)">
+        <ion-icon name="{{page.icon}}"></ion-icon>
+        {{page.title}}
+      </button>
+
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav #chat [root]="rootPage" swipeBackEnabled="false"></ion-nav>
+
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color='primary'>
     <ion-title>Home</ion-title>
+    <button ion-button [menuToggle]>
+      <ion-icon name="menu"></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content class="feed-list" padding>
+  <ion-card *ngFor="let item of news;">
+
+    <img src="https://thumb.ibb.co/fgp1pb/slide3.png" />
+
+      <ion-card-content>
+        <div class="article-title">{{item.title}}</div><br/>
+        <p [innerHtml]="item.description"></p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="paper"></ion-icon>
+            <ion-label>{{item.pubDate}}</ion-label>
+          </button>
+        </ion-col>
+
+        <ion-col text-right>
+          <button ion-button icon-left clear small (click)="openArticle(item.link)">
+            <ion-label>More</ion-label>
+            <ion-icon name="arrow-round-forward"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
 </ion-content>

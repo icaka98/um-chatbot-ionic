@@ -1,0 +1,9 @@
+{
+  "globalDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20170310222111"
+  },
+  "dependencies": {
+    "xml2js": "registry:dt/xml2js#0.0.0+20170310073152",
+    "xml2json": "registry:npm/xml2json#0.9.1+20160811060400"
+  }
+}

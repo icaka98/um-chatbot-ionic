@@ -1,0 +1,55 @@
+<ion-menu [content]="chat">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list *ngFor="let page of pages">
+
+      <button ion-item (click)="openPage(page)">
+        {{page.title}}
+      </button>
+
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav #chat [root]="rootPage" swipeBackEnabled="false"></ion-nav>
+
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title>Chatbot</ion-title>
+    <button ion-button menuToggle="left" id="unhidden_button">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #content padding>
+
+  <div id="chatMessages">
+    <div *ngFor="let message of messages; let last = last;" [class]="message.specialMessage ? 'message special' : 'message'">
+
+      <div [class]="message.username == username ? 'innerMessage messageRight' : 'innerMessage messageLeft'">
+        <div class="username">{{ message.username }}</div>
+        <div class="messageContent">{{ message.message }}</div>
+      </div>
+    </div>
+  </div>
+
+  <ion-note *ngIf="loading">Typing</ion-note>
+  <ion-spinner *ngIf="loading" name="dots"></ion-spinner>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div id="footer">
+      <div class="elem"><ion-input type="text" [(ngModel)]="message"></ion-input></div>
+      <div class="elem"><button ion-button icon-only (click)="sendMessage()"><ion-icon name="send"></ion-icon> </button></div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
