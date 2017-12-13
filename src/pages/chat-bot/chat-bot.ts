@@ -65,6 +65,7 @@ export class ChatBotPage {
     })
       .then(({result: {fulfillment: {speech}}}) => {
         this.ngZone.run(()=> {
+          obj.message = '';
           delay(function () {
             obj.addBotMessage(speech);
             obj.loading = false;
